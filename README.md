@@ -1,1 +1,2 @@
-Part One: Joshua Mansfield
+Part One by: Joshua Mansfield
+Part Two by: Thomas Purdy
