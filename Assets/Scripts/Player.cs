@@ -61,4 +61,12 @@ public class Player : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D whatDidIHit)
+    {
+        if(whatDidIHit.tag == "Enemy")
+        {
+            GameObject.Find("GameManager").GetComponent<GameManager>().LoseLives(1);
+        }
+    }
 }
