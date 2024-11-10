@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private float verticalScreenSize = 7.5f;
     private float speed;
     private int lives;
+    private int score;
 
     public GameObject bullet;
 
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour
     {
         speed = 6f;
         lives = 3;
+        score = 0;
     }
 
     // Update is called once per frame
@@ -62,11 +64,22 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void EarnScore()
+    {
+        score += 1;
+        //score += 1;
+        //score = score + 1;
+    }
+
     private void OnTriggerEnter2D(Collider2D objectHit)
     {
         if(objectHit.tag == "Enemy")
         {
             GameObject.Find("GameManager").GetComponent<GameManager>().LoseLives(1);
+        }
+        else if(objectHit.tag == "Coin")
+        {
+            GameObject.Find("GameManager").GetComponent<GameManager>().EarnScore(1);
         }
     }
 }

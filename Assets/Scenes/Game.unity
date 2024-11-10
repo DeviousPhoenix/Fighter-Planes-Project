@@ -257,8 +257,10 @@ MonoBehaviour:
   player: {fileID: 4901375678046123520, guid: 4d42f934058dfc7449e5f5c692acd9b3, type: 3}
   enemyOne: {fileID: 948535121196126654, guid: a5321131998c1c941a874de35d2676de, type: 3}
   cloud: {fileID: 7919515442959161152, guid: 2345e49b6ce0d5b40a3a556a3d766a77, type: 3}
+  coin: {fileID: 2158028602918508431, guid: ecf783be08a1a5c49982b2da64492a35, type: 3}
   scoreText: {fileID: 842641183}
   livesText: {fileID: 1992022120}
+  score: 0
 --- !u!4 &196701167
 Transform:
   m_ObjectHideFlags: 0
