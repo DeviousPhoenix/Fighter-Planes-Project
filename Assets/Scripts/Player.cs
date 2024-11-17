@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -41,7 +42,7 @@ public class Player : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * Time.deltaTime * speed);
+        transform.Translate(new Vector3(horizontalInput, verticalInput,0) * Time.deltaTime * speed);
         if (transform.position.x > horizontalScreenSize || transform.position.x <= -horizontalScreenSize)
         {
             transform.position = new Vector3(transform.position.x * -1, transform.position.y, 0);
@@ -66,7 +67,7 @@ public class Player : MonoBehaviour
                     Instantiate(bullet, transform.position + new Vector3(0.5f, 1, 0), Quaternion.identity);
                     break;
                 case 3:
-                    Instantiate(bullet, transform.position + new Vector3(-0.5f, 1, 0), Quaternion.Euler(0, 0, 30f));
+                    Instantiate(bullet, transform.position + new Vector3(-0.5f, 1, 0), Quaternion.Euler(0, 0, 30f)); 
                     Instantiate(bullet, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
                     Instantiate(bullet, transform.position + new Vector3(0.5f, 1, 0), Quaternion.Euler(0, 0, -30f));
                     break;
@@ -79,8 +80,7 @@ public class Player : MonoBehaviour
         if (hasShield == false)
         {
             lives--;
-        }
-        else if (hasShield == true)
+        } else if (hasShield == true)
         {
             //lose the shield
             //no longer have a shield
@@ -111,11 +111,11 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D whatIHit)
     {
-        if (whatIHit.tag == "Powerup")
+        if(whatIHit.tag == "Powerup")
         {
             gameManager.PlayPowerUp();
             int powerupType = Random.Range(1, 5); //this can be 1, 2, 3, or 4
-            switch (powerupType)
+            switch(powerupType)
             {
                 case 1:
                     //speed powerup
@@ -128,7 +128,7 @@ public class Player : MonoBehaviour
                     //double shot
                     shooting = 2;
                     gameManager.UpdatePowerupText("Picked up Double Shot!");
-                    StartCoroutine(ShootingPowerDown());
+                    StartCoroutine (ShootingPowerDown());
                     break;
                 case 3:
                     //triple shot

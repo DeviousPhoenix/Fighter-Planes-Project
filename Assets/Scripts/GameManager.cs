@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -39,6 +40,12 @@ public class GameManager : MonoBehaviour
         cloudSpeed = 1;
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        Restart();   
+    }
+
     void CreateEnemyOne()
     {
         Instantiate(enemyOne, new Vector3(Random.Range(-9f, 9f), 7.5f, 0), Quaternion.Euler(0, 0, 180));
@@ -72,6 +79,14 @@ public class GameManager : MonoBehaviour
         gameOverText.gameObject.SetActive(true);
         restartText.gameObject.SetActive(true);
         cloudSpeed = 0;
+    }
+
+    void Restart()
+    {
+        if(Input.GetKeyDown(KeyCode.R) && isPlayerAlive == false)
+        {
+            SceneManager.LoadScene("Game");
+        }
     }
 
     public void UpdatePowerupText(string whichPowerup)
